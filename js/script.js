@@ -50,5 +50,5 @@ function mostrarErroresValidacion(errores) {
 }
 
 function redirigirADocumentoTributario() {
-
+    window.location = "pdf/factura.pdf";
 }
