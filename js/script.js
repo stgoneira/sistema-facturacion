@@ -24,18 +24,18 @@ document.getElementById("form-descarga-doc-tributario")
         const folio = parseInt( form[3].value );
         const monto = parseInt( form[4].value );
 
-        // validacion folio 
-        if( folio < 1) {
+        // validacion folio que se mayor a 1 y que no sea NaN (not a number)
+        if( folio < 1 || isNaN(folio) ) {
             errores = errores + "El folio no debiese ser menor que 1. ";
         }
 
         // validacion monto 
-        if( monto < 1) {
+        if( monto < 1 || isNaN(monto)) {
             errores = errores + "El monto debe ser mayor a 0. ";
         }
 
         if( errores.length > 0) {
-            mostrarErroresValidacion();
+            mostrarErroresValidacion(errores);
         } else {
             redirigirADocumentoTributario();
         }
@@ -43,3 +43,12 @@ document.getElementById("form-descarga-doc-tributario")
         return false; 
 });
 
+function mostrarErroresValidacion(errores) {
+    const mensajes = document.getElementById("mensajes");
+    mensajes.innerHTML = errores; // inserta el texto de la variable errores dentro del DIV
+    mensajes.classList.remove("d-none"); // quita la clase CSS "d-none"    
+}
+
+function redirigirADocumentoTributario() {
+
+}
